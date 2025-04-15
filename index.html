@@ -5,7 +5,7 @@
     <style>
         /* Basic styling for the map container */
         #map {
-            height: 100vh; /* Full viewport height */
+            height: 90vh; /* Adjust height slightly to make space for button/header */
             width: 100%;
         }
         html, body {
@@ -13,78 +13,128 @@
             margin: 0;
             padding: 0;
         }
+        /* Optional: Style the button */
+        #controls {
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h3>San Francisco Speed and Red Light Cameras</h3>
+    <div id="controls">
+        <button id="centerButton">Center on My Location</button>
+    </div>
     <div id="map"></div>
 
     <script src="camera_data.js"></script>
 
     <script>
-        // Define marker icons (using simple colored defaults)
-        const icons = {
-            speed: {
-                url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Blue dot for speed
-            },
-            "red light": {
-                url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png", // Red dot for red light
-            }
-        };
+       // --- Keep your existing 'icons' definition here ---
+       const icons = { /* ... */ };
 
-        function initMap() {
-            // Centered on San Francisco
+       // --- Keep your existing initMap function structure, but add code inside ---
+       function initMap() {
             const sfCenter = { lat: 37.7749, lng: -122.4194 };
-
-            // Create the map instance
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
                 center: sfCenter,
-                mapTypeId: 'roadmap' // Other options: 'satellite', 'hybrid', 'terrain'
+                mapTypeId: 'roadmap'
             });
-
-            // Create an InfoWindow instance (only one is needed)
             const infowindow = new google.maps.InfoWindow();
 
-            // Check if cameraData is loaded
+            // --- Keep your existing code for adding camera markers ---
             if (typeof cameraData !== 'undefined' && cameraData.length > 0) {
-                console.log(`Adding ${cameraData.length} markers to the map.`);
-
-                // Loop through the camera data and add markers
-                cameraData.forEach(camera => {
-                    const position = { lat: camera.latitude, lng: camera.longitude };
-
-                    const marker = new google.maps.Marker({
-                        position: position,
-                        map: map,
-                        title: `${camera.name} (${camera.type})`,
-                        icon: icons[camera.type] || icons.speed // Use type icon, default to speed if type is unexpected
-                    });
-
-                    // Add a click listener to show info window
-                    marker.addListener('click', () => {
-                        const content = `<strong>${camera.name}</strong><br>Type: ${camera.type}<br>Coords: ${camera.latitude.toFixed(6)}, ${camera.longitude.toFixed(6)}`;
-                        infowindow.setContent(content);
-                        infowindow.open(map, marker);
-                    });
-                });
+                // ... (your existing loop using cameraData.forEach) ...
             } else {
-                console.error("Camera data is not loaded or is empty.");
-                // Optionally display a message on the map or page
-                const centerMarker = new google.maps.Marker({
-                     position: sfCenter,
-                     map: map,
-                     title: "No camera data loaded"
-                });
+                // ... (your existing error handling for cameraData) ...
             }
-        }
 
-        // Error handling function for Google Maps script load failure
-        function gm_authFailure() {
-             alert('Failed to load Google Maps. Check API key or network connection.');
-             // You could display a message in the #map div instead
-             document.getElementById('map').innerHTML = '<p style="padding: 20px; text-align: center; color: red;">Error: Could not load Google Maps. Please check your API key and network connection.</p>';
-        }
+            // --- NEW: Add Geolocation Button Functionality ---
+            const locationButton = document.getElementById("centerButton");
+
+            locationButton.addEventListener("click", () => {
+                // Disable button temporarily to prevent multiple clicks
+                locationButton.disabled = true;
+                locationButton.textContent = "Locating...";
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => { // Success Callback
+                            const userLocation = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude,
+                            };
+                            map.setCenter(userLocation);
+                            map.setZoom(15); // Zoom in closer to user's location
+
+                            // Optional: Add a marker for the user's location
+                            new google.maps.Marker({
+                                position: userLocation,
+                                map: map,
+                                title: "Your Location",
+                                // You might want a different icon for the user
+                                // icon: 'path/to/your/user-icon.png'
+                            });
+
+                            locationButton.textContent = "Center on My Location";
+                            locationButton.disabled = false;
+                        },
+                        (error) => { // Error Callback
+                            handleLocationError(true, infowindow, map.getCenter());
+                            locationButton.textContent = "Center on My Location";
+                            locationButton.disabled = false;
+                        }
+                    );
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infowindow, map.getCenter());
+                    locationButton.textContent = "Geolocation Unavailable";
+                    // Keep button disabled as feature is unavailable
+                }
+            });
+            // --- END OF NEW CODE ---
+
+       } // End of initMap function
+
+       // --- NEW: Helper function to handle geolocation errors ---
+       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            let message;
+            const error = window.event && window.event.type === 'error' ? window.event.error : null; // Get error object if available
+
+            if (!browserHasGeolocation) {
+                 message = "Error: Your browser doesn't support geolocation.";
+            } else if (error) {
+                 switch (error.code) {
+                     case error.PERMISSION_DENIED:
+                         message = "Error: You denied the request for Geolocation.";
+                         break;
+                     case error.POSITION_UNAVAILABLE:
+                         message = "Error: Location information is unavailable.";
+                         break;
+                     case error.TIMEOUT:
+                         message = "Error: The request to get user location timed out.";
+                         break;
+                     default:
+                         message = "Error: An unknown error occurred.";
+                         break;
+                 }
+            } else {
+                 // Fallback if error object isn't passed correctly (older way)
+                 message = browserHasGeolocation ? "Error: The Geolocation service failed." : "Error: Your browser doesn't support geolocation.";
+            }
+
+
+            // infoWindow.setPosition(pos); // Show error near map center
+            // infoWindow.setContent(message);
+            // infoWindow.open(map); // Decide if you want error in map popup or alert
+            alert(message); // Simple alert for now
+       }
+       // --- END OF NEW HELPER FUNCTION ---
+
+
+       // --- Keep your existing gm_authFailure function here ---
+       function gm_authFailure() { /* ... */ }
 
     </script>
     <script async defer
