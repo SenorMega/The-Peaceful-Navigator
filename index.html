@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SF Camera Map</title>
+    <style>
+        /* Basic styling for the map container */
+        #map {
+            height: 100vh; /* Full viewport height */
+            width: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h3>San Francisco Speed and Red Light Cameras</h3>
+    <div id="map"></div>
+
+    <script src="camera_data.js"></script>
+
+    <script>
+        // Define marker icons (using simple colored defaults)
+        const icons = {
+            speed: {
+                url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Blue dot for speed
+            },
+            "red light": {
+                url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png", // Red dot for red light
+            }
+        };
+
+        function initMap() {
+            // Centered on San Francisco
+            const sfCenter = { lat: 37.7749, lng: -122.4194 };
+
+            // Create the map instance
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: sfCenter,
+                mapTypeId: 'roadmap' // Other options: 'satellite', 'hybrid', 'terrain'
+            });
+
+            // Create an InfoWindow instance (only one is needed)
+            const infowindow = new google.maps.InfoWindow();
+
+            // Check if cameraData is loaded
+            if (typeof cameraData !== 'undefined' && cameraData.length > 0) {
+                console.log(`Adding ${cameraData.length} markers to the map.`);
+
+                // Loop through the camera data and add markers
+                cameraData.forEach(camera => {
+                    const position = { lat: camera.latitude, lng: camera.longitude };
+
+                    const marker = new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        title: `${camera.name} (${camera.type})`,
+                        icon: icons[camera.type] || icons.speed // Use type icon, default to speed if type is unexpected
+                    });
+
+                    // Add a click listener to show info window
+                    marker.addListener('click', () => {
+                        const content = `<strong>${camera.name}</strong><br>Type: ${camera.type}<br>Coords: ${camera.latitude.toFixed(6)}, ${camera.longitude.toFixed(6)}`;
+                        infowindow.setContent(content);
+                        infowindow.open(map, marker);
+                    });
+                });
+            } else {
+                console.error("Camera data is not loaded or is empty.");
+                // Optionally display a message on the map or page
+                const centerMarker = new google.maps.Marker({
+                     position: sfCenter,
+                     map: map,
+                     title: "No camera data loaded"
+                });
+            }
+        }
+
+        // Error handling function for Google Maps script load failure
+        function gm_authFailure() {
+             alert('Failed to load Google Maps. Check API key or network connection.');
+             // You could display a message in the #map div instead
+             document.getElementById('map').innerHTML = '<p style="padding: 20px; text-align: center; color: red;">Error: Could not load Google Maps. Please check your API key and network connection.</p>';
+        }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbUiwIu1CxvE9lEbqLevKFRSgUGilI-e0&callback=initMap&loading=async&onerror=gm_authFailure">
+    </script>
+
+</body>
+</html>
