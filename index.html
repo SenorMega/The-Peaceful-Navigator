@@ -44,13 +44,19 @@
             console.log("Map object created:", map);
             const infowindow = new google.maps.InfoWindow();
 
-            // --- Define Icons (using simple standard URLs) ---
-             const icons = {
-                 speed: { // Key 'speed'
-                     url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Standard blue dot
+            // --- Define Icons with Scaled Size ---
+            // Adjust the Size(width, height) values as desired
+            const iconWidth = 30;
+            const iconHeight = 30;
+
+            const icons = {
+                 speed: {
+                     url: "https://googleusercontent.com/maps.google.com/1", // HTTPS blue dot
+                     scaledSize: new google.maps.Size(iconWidth, iconHeight)
                  },
-                 "red light": { // Key 'red light' (in quotes)
-                     url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png", // Standard red dot
+                 "red light": {
+                     url: "https://googleusercontent.com/maps.google.com/2", // HTTPS red dot
+                     scaledSize: new google.maps.Size(iconWidth, iconHeight)
                  }
              };
              console.log("Icons object defined:", icons);
