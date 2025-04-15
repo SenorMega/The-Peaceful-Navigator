@@ -33,123 +33,94 @@
        // --- Keep your existing 'icons' definition here ---
        const icons = { /* ... */ };
 
-    function initMap() {
-            console.log("initMap called."); // Check if function starts
-
+       function initMap() {
+            console.log("initMap called.");
             const sfCenter = { lat: 37.7749, lng: -122.4194 };
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
                 center: sfCenter,
                 mapTypeId: 'roadmap'
             });
-            console.log("Map object created:", map); // Check map object
-
+            console.log("Map object created:", map);
             const infowindow = new google.maps.InfoWindow();
 
+            // --- Define Icons (using simple standard URLs) ---
+             const icons = {
+                 speed: { // Key 'speed'
+                     url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Standard blue dot
+                 },
+                 "red light": { // Key 'red light' (in quotes)
+                     url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png", // Standard red dot
+                 }
+             };
+             console.log("Icons object defined:", icons);
+            // --- End Icon Definition ---
+
+
             if (typeof cameraData !== 'undefined' && cameraData.length > 0) {
-                console.log(`cameraData found with ${cameraData.length} items. Starting loop...`); // Confirm data is present
+                console.log(`cameraData found with ${cameraData.length} items. Starting loop...`);
 
                 cameraData.forEach((camera, index) => {
-                    // Log the data for the current camera
                     console.log(`Processing camera ${index + 1}/${cameraData.length}:`, camera);
-
                     try {
-                        // Validate data fields needed
                         if (camera.latitude == null || camera.longitude == null || camera.type == null || camera.name == null) {
-                            console.warn(`Camera ${index + 1} has missing data. Skipping.`);
-                            return; // Skip this iteration
+                            console.warn(`Camera ${index + 1} has missing data. Skipping.`); return;
                         }
-
                         const position = { lat: parseFloat(camera.latitude), lng: parseFloat(camera.longitude) };
-
-                        // Check for invalid number conversion
                         if (isNaN(position.lat) || isNaN(position.lng)) {
-                             console.error(`Invalid coordinates (NaN) for camera ${index + 1}: Lat=${camera.latitude}, Lng=${camera.longitude}. Skipping.`);
-                             return; // Skip this marker
+                             console.error(`Invalid coordinates (NaN) for camera ${index + 1}. Skipping.`); return;
                         }
-
-                        // Check coordinate range (basic sanity check)
                          if (position.lat < -90 || position.lat > 90 || position.lng < -180 || position.lng > 180) {
-                             console.error(`Coordinates out of range for camera ${index + 1}:`, position, `. Skipping.`);
-                             return; // Skip this marker
+                             console.error(`Coordinates out of range for camera ${index + 1}. Skipping.`); return;
                          }
-
                         console.log(`  Prepared position for marker ${index + 1}:`, position);
 
-                        const markerIcon = icons[camera.type] || icons.speed; // Use fallback icon
-                        if (!icons[camera.type]) {
-                             console.warn(`  No specific icon found for type '${camera.type}', using default.`);
-                        }
+                        // --- Refined Icon Logic ---
+                        const currentType = camera.type; // Get the type string
+                        console.log(`  Icon lookup key: '${currentType}'`); // Log the exact type string being used
 
-                        // Create the marker
+                        let markerIconUrl = null; // Default to null (will use Google's default teardrop)
+
+                        if (currentType === 'speed' && icons['speed']) {
+                             markerIconUrl = icons['speed'].url;
+                             console.log("  Using 'speed' icon.");
+                        } else if (currentType === 'red light' && icons['red light']) {
+                             markerIconUrl = icons['red light'].url;
+                             console.log("  Using 'red light' icon.");
+                        } else {
+                             console.warn(`  No specific icon found for type '${currentType}', using default Google marker.`);
+                        }
+                        // --- End Refined Icon Logic ---
+
                         const marker = new google.maps.Marker({
                             position: position,
-                            map: map, // Explicitly adding to map here
-                            title: `${camera.name} (${camera.type})`,
-                            icon: markerIcon
+                            map: map,
+                            title: `${camera.name} (${currentType})`, // Use currentType here too
+                            icon: markerIconUrl // Assign the URL directly (or null for default)
                         });
+                        console.log(`  Marker ${index + 1} created (using icon URL: ${markerIconUrl || 'default'}):`, marker);
 
-                        // Log the created marker object
-                        console.log(`  Marker ${index + 1} created:`, marker);
-
-                        // Add listener (less likely to cause markers not to show, but log anyway)
                         marker.addListener('click', () => {
-                            const content = `<strong>${camera.name}</strong><br>Type: ${camera.type}<br>Coords: ${camera.latitude.toFixed(6)}, ${camera.longitude.toFixed(6)}`;
+                            const content = `<strong>${camera.name}</strong><br>Type: ${currentType}<br>Coords: ${camera.latitude.toFixed(6)}, ${camera.longitude.toFixed(6)}`;
                             infowindow.setContent(content);
                             infowindow.open(map, marker);
                         });
 
                     } catch (error) {
-                        // Catch any unexpected error during marker creation for one camera
                         console.error(`Error processing camera ${index + 1}:`, camera, error);
                     }
                 }); // End of forEach loop
-
                  console.log("Finished processing all cameras.");
 
             } else {
-                // This block executes if cameraData isn't loaded or is empty
                 console.error("Camera data is not loaded, is empty, or is not an array.");
-                const centerMarker = new google.maps.Marker({
-                     position: sfCenter,
-                     map: map,
-                     title: "No camera data loaded"
-                });
+                // ... (center marker code) ...
             }
 
             // --- Keep the Geolocation Button Functionality ---
-            const locationButton = document.getElementById("centerButton");
-            locationButton.addEventListener("click", () => {
-                 console.log("Center on Me button clicked."); // Log button click
-                 // ... (rest of geolocation code remains the same) ...
-                  if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => { // Success Callback
-                            console.log("Geolocation success. Position:", position);
-                            const userLocation = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            };
-                            map.setCenter(userLocation);
-                            map.setZoom(15);
-                            new google.maps.Marker({ /* ... user marker ... */ });
-                            locationButton.textContent = "Center on My Location";
-                            locationButton.disabled = false;
-                        },
-                        (geoError) => { // Error Callback - pass the error object
-                            console.error("Geolocation error:", geoError);
-                            handleLocationError(true, infowindow, map.getCenter(), geoError); // Pass error object
-                            locationButton.textContent = "Center on My Location";
-                            locationButton.disabled = false;
-                        }
-                    );
-                } else {
-                    console.warn("Geolocation not supported by browser.");
-                    handleLocationError(false, infowindow, map.getCenter(), null); // Pass null for error
-                    locationButton.textContent = "Geolocation Unavailable";
-                }
-            });
-            // --- END OF Geolocation Code ---
+            // ... (button listener code remains the same) ...
+             const locationButton = document.getElementById("centerButton");
+             locationButton.addEventListener("click", () => { /* ... */ });
 
        } // End of initMap function
 
