@@ -33,104 +33,162 @@
        // --- Keep your existing 'icons' definition here ---
        const icons = { /* ... */ };
 
-       // --- Keep your existing initMap function structure, but add code inside ---
-       function initMap() {
+    function initMap() {
+            console.log("initMap called."); // Check if function starts
+
             const sfCenter = { lat: 37.7749, lng: -122.4194 };
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
                 center: sfCenter,
                 mapTypeId: 'roadmap'
             });
+            console.log("Map object created:", map); // Check map object
+
             const infowindow = new google.maps.InfoWindow();
 
-            // --- Keep your existing code for adding camera markers ---
             if (typeof cameraData !== 'undefined' && cameraData.length > 0) {
-                // ... (your existing loop using cameraData.forEach) ...
+                console.log(`cameraData found with ${cameraData.length} items. Starting loop...`); // Confirm data is present
+
+                cameraData.forEach((camera, index) => {
+                    // Log the data for the current camera
+                    console.log(`Processing camera ${index + 1}/${cameraData.length}:`, camera);
+
+                    try {
+                        // Validate data fields needed
+                        if (camera.latitude == null || camera.longitude == null || camera.type == null || camera.name == null) {
+                            console.warn(`Camera ${index + 1} has missing data. Skipping.`);
+                            return; // Skip this iteration
+                        }
+
+                        const position = { lat: parseFloat(camera.latitude), lng: parseFloat(camera.longitude) };
+
+                        // Check for invalid number conversion
+                        if (isNaN(position.lat) || isNaN(position.lng)) {
+                             console.error(`Invalid coordinates (NaN) for camera ${index + 1}: Lat=${camera.latitude}, Lng=${camera.longitude}. Skipping.`);
+                             return; // Skip this marker
+                        }
+
+                        // Check coordinate range (basic sanity check)
+                         if (position.lat < -90 || position.lat > 90 || position.lng < -180 || position.lng > 180) {
+                             console.error(`Coordinates out of range for camera ${index + 1}:`, position, `. Skipping.`);
+                             return; // Skip this marker
+                         }
+
+                        console.log(`  Prepared position for marker ${index + 1}:`, position);
+
+                        const markerIcon = icons[camera.type] || icons.speed; // Use fallback icon
+                        if (!icons[camera.type]) {
+                             console.warn(`  No specific icon found for type '${camera.type}', using default.`);
+                        }
+
+                        // Create the marker
+                        const marker = new google.maps.Marker({
+                            position: position,
+                            map: map, // Explicitly adding to map here
+                            title: `${camera.name} (${camera.type})`,
+                            icon: markerIcon
+                        });
+
+                        // Log the created marker object
+                        console.log(`  Marker ${index + 1} created:`, marker);
+
+                        // Add listener (less likely to cause markers not to show, but log anyway)
+                        marker.addListener('click', () => {
+                            const content = `<strong>${camera.name}</strong><br>Type: ${camera.type}<br>Coords: ${camera.latitude.toFixed(6)}, ${camera.longitude.toFixed(6)}`;
+                            infowindow.setContent(content);
+                            infowindow.open(map, marker);
+                        });
+
+                    } catch (error) {
+                        // Catch any unexpected error during marker creation for one camera
+                        console.error(`Error processing camera ${index + 1}:`, camera, error);
+                    }
+                }); // End of forEach loop
+
+                 console.log("Finished processing all cameras.");
+
             } else {
-                // ... (your existing error handling for cameraData) ...
+                // This block executes if cameraData isn't loaded or is empty
+                console.error("Camera data is not loaded, is empty, or is not an array.");
+                const centerMarker = new google.maps.Marker({
+                     position: sfCenter,
+                     map: map,
+                     title: "No camera data loaded"
+                });
             }
 
-            // --- NEW: Add Geolocation Button Functionality ---
+            // --- Keep the Geolocation Button Functionality ---
             const locationButton = document.getElementById("centerButton");
-
             locationButton.addEventListener("click", () => {
-                // Disable button temporarily to prevent multiple clicks
-                locationButton.disabled = true;
-                locationButton.textContent = "Locating...";
-
-                if (navigator.geolocation) {
+                 console.log("Center on Me button clicked."); // Log button click
+                 // ... (rest of geolocation code remains the same) ...
+                  if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(
                         (position) => { // Success Callback
+                            console.log("Geolocation success. Position:", position);
                             const userLocation = {
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude,
                             };
                             map.setCenter(userLocation);
-                            map.setZoom(15); // Zoom in closer to user's location
-
-                            // Optional: Add a marker for the user's location
-                            new google.maps.Marker({
-                                position: userLocation,
-                                map: map,
-                                title: "Your Location",
-                                // You might want a different icon for the user
-                                // icon: 'path/to/your/user-icon.png'
-                            });
-
+                            map.setZoom(15);
+                            new google.maps.Marker({ /* ... user marker ... */ });
                             locationButton.textContent = "Center on My Location";
                             locationButton.disabled = false;
                         },
-                        (error) => { // Error Callback
-                            handleLocationError(true, infowindow, map.getCenter());
+                        (geoError) => { // Error Callback - pass the error object
+                            console.error("Geolocation error:", geoError);
+                            handleLocationError(true, infowindow, map.getCenter(), geoError); // Pass error object
                             locationButton.textContent = "Center on My Location";
                             locationButton.disabled = false;
                         }
                     );
                 } else {
-                    // Browser doesn't support Geolocation
-                    handleLocationError(false, infowindow, map.getCenter());
+                    console.warn("Geolocation not supported by browser.");
+                    handleLocationError(false, infowindow, map.getCenter(), null); // Pass null for error
                     locationButton.textContent = "Geolocation Unavailable";
-                    // Keep button disabled as feature is unavailable
                 }
             });
-            // --- END OF NEW CODE ---
+            // --- END OF Geolocation Code ---
 
        } // End of initMap function
 
-       // --- NEW: Helper function to handle geolocation errors ---
-       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+       // --- Update handleLocationError to accept the error object ---
+       function handleLocationError(browserHasGeolocation, infoWindow, pos, error) { // Added 'error' parameter
             let message;
-            const error = window.event && window.event.type === 'error' ? window.event.error : null; // Get error object if available
-
+            // Use the passed 'error' object directly
             if (!browserHasGeolocation) {
                  message = "Error: Your browser doesn't support geolocation.";
-            } else if (error) {
+            } else if (error) { // Check if error object exists
                  switch (error.code) {
-                     case error.PERMISSION_DENIED:
+                     case error.PERMISSION_DENIED: // Constants are usually uppercase
+                     case 1: // Add numeric codes as fallback
                          message = "Error: You denied the request for Geolocation.";
                          break;
                      case error.POSITION_UNAVAILABLE:
+                     case 2:
                          message = "Error: Location information is unavailable.";
                          break;
                      case error.TIMEOUT:
+                     case 3:
                          message = "Error: The request to get user location timed out.";
                          break;
                      default:
-                         message = "Error: An unknown error occurred.";
+                         message = `Error: An unknown geolocation error occurred (Code: ${error.code}).`;
                          break;
                  }
             } else {
-                 // Fallback if error object isn't passed correctly (older way)
-                 message = browserHasGeolocation ? "Error: The Geolocation service failed." : "Error: Your browser doesn't support geolocation.";
+                 // Fallback if error object isn't passed correctly
+                 message = browserHasGeolocation ? "Error: The Geolocation service failed (no error code)." : "Error: Your browser doesn't support geolocation.";
             }
-
-
-            // infoWindow.setPosition(pos); // Show error near map center
-            // infoWindow.setContent(message);
-            // infoWindow.open(map); // Decide if you want error in map popup or alert
-            alert(message); // Simple alert for now
+            console.error("handleLocationError:", message); // Log the error message
+            alert(message);
        }
-       // --- END OF NEW HELPER FUNCTION ---
+       // --- END OF handleLocationError modification ---
+
+
+       // --- Keep your existing gm_authFailure function here ---
+       function gm_authFailure() { /* ... */ }
 
 
        // --- Keep your existing gm_authFailure function here ---
