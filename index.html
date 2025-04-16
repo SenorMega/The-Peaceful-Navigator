@@ -59,12 +59,12 @@
              }
 
              const map = new google.maps.Map(document.getElementById("map"), {
-                 zoom: 12, center: sfCenter, mapTypeId: 'roadmap', mapID: '8ca02649e7e4a64a'
-                 // Recommended: Disable default POI icons if map gets crowded
-                 // styles: [{ featureType: "poi", stylers: [{ visibility: "off" }] }]
-                 // Recommended: Add mapId for potential future cloud-based styling
-                 // mapId: "YOUR_MAP_ID" // Create Map ID in Google Cloud Console
-             });
+                zoom: 12,
+                center: sfCenter,
+                mapTypeId: 'roadmap',
+                mapId: '8ca02649e7e4a64a' // *** CHECK THIS LINE ***
+            });
+             
              console.log("Map object created:", map);
              const infowindow = new google.maps.InfoWindow();
 
