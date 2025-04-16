@@ -59,7 +59,7 @@
              }
 
              const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
+                zoom: 20,
                 center: sfCenter,
                 mapTypeId: 'roadmap',
                 mapId: '8ca02649e7e4a64a' // *** CHECK THIS LINE ***
@@ -153,7 +153,7 @@
                                 const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
                                 console.log("Setting center to:", userLocation);
                                 map.setCenter(userLocation);
-                                map.setZoom(15);
+                                map.setZoom(20);
                                 console.log("Adding user location marker.");
                                 // *** NOTE: Consider changing this to AdvancedMarkerElement too ***
                                 new google.maps.Marker({ // Or AdvancedMarkerElement
