@@ -18,6 +18,45 @@
             padding: 10px;
             text-align: center;
         }
+        /* Legend Styling */
+        #legend {
+            position: absolute; /* Position it relative to the viewport or a positioned ancestor */
+            bottom: 30px;       /* Distance from bottom */
+            right: 10px;        /* Distance from right */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 10px 15px;
+            border: 1px solid #AAA;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            z-index: 10; /* Ensure it's above map tiles/some controls if needed */
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        #legend h4 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        #legend div {
+            margin-bottom: 5px;
+        }
+        .legend-key {
+            display: inline-block; /* Allow setting width/height */
+            width: 18px;          /* Match the marker size */
+            height: 18px;         /* Match the marker size */
+            border-radius: 50%;   /* Make it a circle */
+            border: 2px solid white; /* Match the marker border */
+            box-shadow: 0 0 3px rgba(0,0,0,0.5); /* Match marker shadow */
+            margin-right: 8px;    /* Space between key and text */
+            vertical-align: middle; /* Align circle nicely with text */
+        }
+        /* Set colors to match your markerColors in JavaScript */
+        .legend-key.speed {
+            background-color: #1E90FF; /* DodgerBlue */
+        }
+        .legend-key.red-light {
+            background-color: #FF4500; /* OrangeRed */
+        }
     </style>
 </head>
 <body>
