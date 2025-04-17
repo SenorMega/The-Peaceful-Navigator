@@ -205,17 +205,15 @@
 
                                  console.log("Adding user location marker.");
 
-                                 // --- Create and Style User Marker --- /// *** NEW/UPDATED *** ///
-                                 const userMarkerDiv = document.createElement('div');
-                                 // Let's make it slightly larger and a different color (e.g., Google Blue)
-                                 // Adjust size as desired (camera icons were maybe 30px?)
-                                 const userMarkerSize = 36;
-                                 userMarkerDiv.style.width = `${userMarkerSize}px`;
-                                 userMarkerDiv.style.height = `${userMarkerSize}px`;
-                                 userMarkerDiv.style.borderRadius = '50%';
-                                 userMarkerDiv.style.backgroundColor = '#4285F4'; // Google Blue
-                                 userMarkerDiv.style.border = '3px solid white'; // Slightly thicker border
-                                 userMarkerDiv.style.boxShadow = '0 0 6px rgba(0,0,0,0.6)'; // Slightly stronger shadow
+                                // --- Create User Marker Image Element (Using GIF) --- /// *** NEW *** ///
+                                const userMarkerImg = document.createElement('img');
+                                userMarkerImg.src = 'party_blob.gif'; // *** REPLACE with your GIF filename to change***
+                                // Set the desired display size for your GIF
+                                const userMarkerSize = 36; // Adjust desired pixel size
+                                userMarkerImg.style.width = `${userMarkerSize}px`;
+                                userMarkerImg.style.height = `${userMarkerSize}px`;
+                                // Optional: Add other styles if needed
+                                // userMarkerImg.style.objectFit = 'contain';
 
                                  // --- Use AdvancedMarkerElement for User Location --- /// *** CHANGED *** ///
                                  // Ensure AdvancedMarkerElement class is available (it should be)
@@ -224,7 +222,7 @@
                                           position: userLocation,
                                           map: map,
                                           title: "Your Location",
-                                          content: userMarkerDiv, // Assign the styled div
+                                          content: userMarkerImg, // Assign the styled div
                                           zIndex: 1 // Optional: Try to ensure it's above camera icons
                                       });
                                   } else {
