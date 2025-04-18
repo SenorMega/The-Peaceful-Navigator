@@ -68,10 +68,26 @@
             /* border: 1px solid #ccc; */
             /* border-radius: 4px; */
         }
+
+        /* --- Styles for the Page Title --- */
+        .title-container {
+            text-align: center; /* Centers the content (the h3) inside the div */
+            padding: 15px 10px; /* Adds space above/below (15px) and sides (10px) */
+        }
+
+        .title-container h3 {
+            font-size: 64px;    /* Makes font size larger (relative to base size). Try 1.8em, 24px, etc. */
+            margin: 0;         /* Removes default browser margins around the h3 */
+            font-weight: 600;  /* Adjust boldness (e.g., normal, 500, 700) */
+            color: #333;       /* Optional: Set a specific text color */
+        }
+        
     </style>
 </head>
 <body>
-    <h3>The Peaceful Navigator</h3>
+    <div class="title-container">
+        <h3>The Peaceful Navigator</h3>
+    </div>
     <div id="controls">
         <button id="centerButton">Center on My Location</button>
     </div>
