@@ -1,0 +1,190 @@
+<style>
+    /* --- Base Styles --- */
+    #map { height: 70vh; width: 100%; margin: 0; padding: 0; }
+    .title-container, #controls, #map, #legend { box-sizing: border-box; }
+    /* --- Title Styles --- */
+    .title-container { text-align: center; padding: 15px 10px; }
+    .title-container h3 { font-size: 1.8em; margin: 0; font-weight: 600; }
+    /* --- Controls Styles --- */
+    #controls { padding: 10px; text-align: center; }
+    #centerButton { font-size: 16px; padding: 8px 15px; cursor: pointer; }
+    /* --- Legend Styles --- */
+    #legend { position: absolute; bottom: 10px; left: 10px; background-color: rgba(255, 255, 255, 0.9); padding: 10px 15px; border: 1px solid #AAA; border-radius: 5px; z-index: 10; font-size: 12px; }
+    #legend h4 { margin-top: 0; margin-bottom: 8px; text-align: center; }
+    #legend div { margin-bottom: 5px; }
+    .legend-key { display: inline-block; width: 18px; height: 18px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 3px rgba(0,0,0,0.5); margin-right: 8px; vertical-align: middle; }
+    .legend-key.speed { background-color: #1E90FF; }
+    .legend-key.red-light { background-color: #FF4500; }
+</style>
+
+<div id="controls">
+    <button id="centerButton">Center on My Location</button>
+</div>
+<div id="map"></div> <div id="legend">
+    <h4>Legend</h4>
+    <div><span class="legend-key speed"></span> Speed Camera</div>
+    <div><span class="legend-key red-light"></span> Red Light Camera</div>
+</div>
+
+<script>
+    // Define global functions FIRST
+    function handleLocationError(browserHasGeolocation, infoWindow, pos, error) {
+        let message = "Geolocation error.";
+        if (!browserHasGeolocation) { message = "Error: Your browser doesn't support geolocation."; }
+        else if (error) { switch (error.code) { /* ... case statements ... */ } }
+        else { message = browserHasGeolocation ? "Geolocation failed." : "Geolocation not supported."; }
+        console.error("handleLocationError:", message); alert(message);
+    }
+
+    function gm_authFailure() {
+        console.error("Google Maps API failed to load."); alert('FATAL ERROR: Google Maps could not load.');
+        const mapDiv = document.getElementById('map');
+        if (mapDiv) { mapDiv.innerHTML = '<p>Error: Maps load failure.</p>'; }
+    }
+
+    // Define initMap globally
+    async function initMap() {
+        console.log("initMap called (inside Squarespace).");
+        try {
+            // --- Constants ---
+            const sfCenter = { lat: 37.7749, lng: -122.4194 };
+            const mapId = '8ca02649e7e4a64a'; // Your Map ID
+            const cameraDataUrl = 'https://raw.githubusercontent.com/SenorMega/The-Peaceful-Navigator/main/camera_data.json'; // Correct URL to .json
+            const markerColors = { speed: "#1E90FF", "red light": "#FF4500" };
+
+            // --- Ensure google maps is loaded ---
+            if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                 console.error("FATAL: google.maps object not available."); gm_authFailure(); return;
+            }
+
+            // --- Fetch Camera Data ---
+            let cameraData = [];
+            try {
+                 console.log("Fetching camera data from:", cameraDataUrl);
+                 const response = await fetch(cameraDataUrl, { cache: "no-store" });
+                 if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+                 const contentType = response.headers.get("content-type");
+                 console.log("Received Content-Type:", contentType); // Should be text/plain or application/json
+                 cameraData = await response.json();
+                 console.log(`Successfully fetched/parsed ${cameraData.length} items.`);
+                 if (!Array.isArray(cameraData)) { throw new Error("Parsed data not array."); }
+            } catch (fetchError) {
+                 console.error("Failed fetch/parse camera data:", fetchError);
+                 alert("Error loading camera data."); // Keep going without markers
+            }
+            // --- End Fetch Camera Data ---
+
+            // --- Create Map ---
+            const mapOptions = { // Using an options object is cleaner
+                 zoom: 12,
+                 center: sfCenter,
+                 mapTypeId: 'roadmap',
+                 mapId: '8ca02649e7e4a64a', // Your Map ID
+                 fullscreenControl: true // *** ADD THIS LINE ***
+             };
+             console.log("Attempting to create map with options:", JSON.stringify(mapOptions));
+
+             const map = new google.maps.Map(document.getElementById("map"), mapOptions); // Pass the options object
+             console.log("Map object created:", map);
+
+            // --- Load Marker Library ---
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+            console.log("Advanced Marker Element library loaded.");
+
+            // --- Process Markers ---
+            if (cameraData.length > 0) {
+                console.log(`Processing ${cameraData.length} markers...`);
+                cameraData.forEach((camera, index) => {
+                     try {
+                         const position = { lat: parseFloat(camera.latitude), lng: parseFloat(camera.longitude) };
+                         if (isNaN(position.lat) || isNaN(position.lng)) { console.warn(`Skipping invalid coords ${index+1}`); return; }
+                         const currentType = camera.type || 'unknown';
+                         const currentName = camera.name || 'Unnamed';
+                         const markerDiv = document.createElement('div');
+                         markerDiv.style.width = '18px'; markerDiv.style.height = '18px'; markerDiv.style.borderRadius = '50%';
+                         markerDiv.style.backgroundColor = markerColors[currentType] || '#808080';
+                         markerDiv.style.border = '2px solid white'; markerDiv.style.boxShadow = '0 0 3px rgba(0,0,0,0.5)';
+
+                         // *** FIXED TITLE SYNTAX HERE (using backticks) ***
+                         const marker = new AdvancedMarkerElement({ map: map, position: position, content: markerDiv, title: `${currentName} (${currentType})` });
+
+                         // *** RESTORED INFOWINDOW LOGIC HERE ***
+                         marker.addListener('click', () => {
+                             const content = `<strong>${currentName}</strong><br>Type: ${currentType}<br>Coords: ${position.lat.toFixed(6)}, ${position.lng.toFixed(6)}`;
+                             infowindow.close();
+                             infowindow.setContent(content);
+                             infowindow.setPosition(position);
+                             infowindow.open(map);
+                         });
+                     } catch(e){ console.error(`Error in marker loop item ${index}:`, e); }
+                });
+                console.log("Finished processing all cameras.");
+            } else { console.warn("No camera data available to process."); }
+
+            // --- Geolocation Button Logic ---
+            const locationButton = document.getElementById("centerButton");
+            console.log("Button element found:", locationButton);
+            if (locationButton) {
+                locationButton.addEventListener("click", () => {
+                    // --- START OF RESTORED BUTTON CODE ---
+                    console.log("Center on Me button clicked.");
+                    locationButton.disabled = true;
+                    locationButton.textContent = "Locating...";
+
+                    if (navigator.geolocation) {
+                        console.log("Browser supports geolocation. Attempting getCurrentPosition...");
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => { // Success Callback
+                                console.log("Geolocation success. Position:", position);
+                                try {
+                                    const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
+                                    console.log("Setting center to:", userLocation);
+                                    map.setCenter(userLocation);
+                                    map.setZoom(15);
+                                    console.log("Adding user location marker.");
+
+                                    // --- Create User Marker Image Element (Using GIF) --- /// *** REPLACE userMarkerDiv CODE WITH THIS *** ///
+                                    const userMarkerImg = document.createElement('img');
+                                    userMarkerImg.src = 'https://raw.githubusercontent.com/SenorMega/The-Peaceful-Navigator/main/party_blob.gif'; // *** REPLACE with your exact GIF filename/path relative to repo root ***
+                                    // Set the desired display size for your GIF
+                                    const userMarkerSize = 36; // Adjust desired pixel size
+                                    userMarkerImg.style.width = `${userMarkerSize}px`;
+                                    userMarkerImg.style.height = `${userMarkerSize}px`;
+                                    // --- End Image Element Code ---
+
+                                    // --- Use AdvancedMarkerElement for User Location ---
+                                    // Ensure this part uses userMarkerImg for content:
+                                    if (typeof AdvancedMarkerElement !== 'undefined') {
+                                        new AdvancedMarkerElement({
+                                            position: userLocation,
+                                           map: map,
+                                           title: "Your Location",
+                                           content: userMarkerImg, // *** Make sure this uses the img element ***
+                                           zIndex: 1
+                                        });
+                                    } else { new google.maps.Marker({ position: userLocation, map: map, title: "Your Location (Fallback)" }); }
+                                    console.log("Map centered and zoomed successfully.");
+                                } catch (e) { console.error("Error in success callback:", e); }
+                                finally { locationButton.textContent = "Center on My Location"; locationButton.disabled = false; }
+                            },
+                            (geoError) => { // Error Callback
+                                console.error("Geolocation error callback triggered:", geoError);
+                                handleLocationError(true, infowindow, map.getCenter(), geoError);
+                                locationButton.textContent = "Center on My Location";
+                                locationButton.disabled = false;
+                            }
+                        );
+                    } else {
+                        console.warn("Geolocation not supported.");
+                        handleLocationError(false, infowindow, map.getCenter(), null);
+                        locationButton.textContent = "Geolocation Unavailable";
+                    }
+                    // --- END OF RESTORED BUTTON CODE ---
+                });
+                console.log("Click listener attached to button.");
+            } else { console.error("Could not find button element."); }
+            // --- END OF Geolocation Code ---
+
+        } catch (initError) { console.error("Error during initMap execution:", initError); gm_authFailure(); }
+    } // End of async initMap function
+</script>
