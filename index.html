@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Has Moved - The Peaceful Navigator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 35px 45px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #222;
+            margin-bottom: 15px;
+        }
+        p {
+             line-height: 1.6;
+             margin-bottom: 10px;
+        }
+        button {
+            font-size: 1.1em;
+            padding: 12px 25px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.2s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>This Map Has Moved!</h2>
+        <p>The Peaceful Navigator map is now hosted at its new location.</p>
+        <p>Please click the button below to visit the updated map, or update your bookmarks.</p>
+        <button id="redirectButton">Go to Map</button>
+    </div>
+
+    <script>
+        // Wait for the DOM to be ready before attaching listener
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const redirectButton = document.getElementById('redirectButton');
+            if (redirectButton) {
+                redirectButton.addEventListener('click', function() {
+                    // Redirect to the new Squarespace page URL
+                    // Make sure the URL starts with https://
+                    window.location.href = 'https://www.bkbots.com/the-peaceful-navigator';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
