@@ -190,22 +190,36 @@ if __name__ == "__main__":
         for i, camera in enumerate(all_cameras[:5]):
              print(f"  {i+1}. Type: {camera['type']}, Name: {camera['name']}, Coords: ({camera['latitude']:.6f}, {camera['longitude']:.6f})")
 
-        # --- NEW: WRITE DATA TO A .JS FILE ---
-        output_js_filename = 'camera_data.js'
-        output_js_path = os.path.join(script_dir, output_js_filename)
 
+
+        # --- NEW WAY: WRITE PURE JSON DATA TO A .json FILE ---
+        output_json_filename = 'camera_data.json' # Note the .json extension
+        output_json_path = os.path.join(script_dir, output_json_filename)
         try:
+            with open(output_json_path, 'w', encoding='utf-8') as f:
+                # Dump only the list/array directly as JSON
+                json.dump(all_cameras, f, indent=2)
+            print(f"\nSuccessfully wrote {len(all_cameras)} camera locations to {output_json_filename}")
+        except Exception as e:
+            print(f"\nError writing data to {output_json_filename}: {e}")
+        # --- END OF NEW CODE ---
+        
+         
+        # --- WRITE DATA TO A .JS FILE ---
+        #output_js_filename = 'camera_data.js'
+        #output_js_path = os.path.join(script_dir, output_js_filename)
+        # try:
             # Use json.dumps for proper formatting of the list within the JS variable
             # We are creating a JS file that declares a constant variable 'cameraData'
-            js_content = f"const cameraData = {json.dumps(all_cameras, indent=2)};"
+            # js_content = f"const cameraData = {json.dumps(all_cameras, indent=2)};"
 
-            with open(output_js_path, 'w', encoding='utf-8') as f:
-                f.write(js_content)
-            print(f"\nSuccessfully wrote {len(all_cameras)} camera locations to {output_js_filename}")
+            # with open(output_js_path, 'w', encoding='utf-8') as f:
+            #     f.write(js_content)
+            # print(f"\nSuccessfully wrote {len(all_cameras)} camera locations to {output_js_filename}")
 
-        except Exception as e:
-            print(f"\nError writing data to {output_js_filename}: {e}")
-        # --- END OF NEW CODE ---
+        # except Exception as e:
+        #     print(f"\nError writing data to {output_js_filename}: {e}")
+        # --- END OF CODE ---*/
 
     else:
         print("\nNo camera data available to display.")
