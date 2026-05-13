@@ -1,234 +1,360 @@
 [
   {
     "type": "speed",
-    "name": "Point 1",
-    "description": "",
+    "name": "Fulton St from 42nd Ave to 43rd Ave",
+    "description": "25 MPH",
     "longitude": -122.5034169,
     "latitude": 37.771732
   },
   {
     "type": "speed",
-    "name": "Point 2",
-    "description": "",
+    "name": "Fulton St from 2nd Ave to Arguello Blvd",
+    "description": "25 MPH",
     "longitude": -122.4594217,
     "latitude": 37.7743583
   },
   {
     "type": "speed",
-    "name": "Point 3",
-    "description": "",
+    "name": "Geary Blvd from 7th Ave to 8th Ave",
+    "description": "25 MPH",
     "longitude": -122.4656382,
     "latitude": 37.7810217
   },
   {
     "type": "speed",
-    "name": "Point 4",
-    "description": "",
+    "name": "Lincoln Way from 27th Ave to 28th Ave",
+    "description": "30 MPH",
     "longitude": -122.4863094,
     "latitude": 37.7648988
   },
   {
     "type": "speed",
-    "name": "Point 5",
-    "description": "",
+    "name": "Geary Blvd from Webster St to Buchanan St",
+    "description": "30 MPH",
     "longitude": -122.4313088,
     "latitude": 37.7846226
   },
   {
     "type": "speed",
-    "name": "Point 6",
-    "description": "",
+    "name": "Turk St from Van Ness Ave to Polk St",
+    "description": "20 MPH",
     "longitude": -122.4197715,
     "latitude": 37.7820919
   },
   {
     "type": "speed",
-    "name": "Point 7",
-    "description": "",
+    "name": "Bay St from Octavia St to Gough St",
+    "description": "25 MPH",
     "longitude": -122.4292219,
     "latitude": 37.8036122
   },
   {
     "type": "speed",
-    "name": "Point 8",
-    "description": "",
+    "name": "Franklin St from Union St to Green St",
+    "description": "25 MPH",
     "longitude": -122.4255016,
     "latitude": 37.7978493
   },
   {
     "type": "speed",
-    "name": "Point 9",
-    "description": "",
+    "name": "Columbus Ave from Lombard St to Greenwich St",
+    "description": "20 MPH",
     "longitude": -122.4132252,
     "latitude": 37.8025361
   },
   {
     "type": "speed",
-    "name": "Point 10",
-    "description": "",
+    "name": "Broadway from Powell St to Stockton St",
+    "description": "20 MPH",
     "longitude": -122.4094503,
     "latitude": 37.7975727
   },
   {
     "type": "speed",
-    "name": "Point 11",
-    "description": "",
+    "name": "Embarcadero from Green St to Battery St",
+    "description": "30 MPH",
     "longitude": -122.4006524,
     "latitude": 37.8025589
   },
   {
     "type": "speed",
-    "name": "Point 13",
-    "description": "",
+    "name": "Mission St from 8th St to 9th St",
+    "description": "20 MPH",
     "longitude": -122.4139716,
     "latitude": 37.7768001
   },
   {
     "type": "speed",
-    "name": "Point 14",
-    "description": "",
+    "name": "10th St from Harrison St to Folsom St",
+    "description": "25 MPH",
     "longitude": -122.4121495,
     "latitude": 37.7721858
   },
   {
     "type": "speed",
-    "name": "Point 15",
-    "description": "",
+    "name": "9th St from Bryant St to Harrison St",
+    "description": "25 MPH",
     "longitude": -122.4093381,
     "latitude": 37.7719974
   },
   {
     "type": "speed",
-    "name": "Point 16",
-    "description": "",
+    "name": "7th St from Harrison St to Folsom St",
+    "description": "25 MPH",
     "longitude": -122.4070519,
     "latitude": 37.7761713
   },
   {
     "type": "speed",
-    "name": "Point 17",
-    "description": "",
+    "name": "Harrison St from 4th St to 5th St",
+    "description": "25 MPH",
     "longitude": -122.4007047,
     "latitude": 37.7799695
   },
   {
     "type": "speed",
-    "name": "Point 18",
-    "description": "",
+    "name": "Bryant St from 2nd St to 3rd St",
+    "description": "25 MPH",
     "longitude": -122.3947052,
     "latitude": 37.7821892
   },
   {
     "type": "speed",
-    "name": "Point 19",
-    "description": "Eastbound Only",
+    "name": "King St (EB only) from 4th St to 5th St",
+    "description": "30 MPH",
     "longitude": -122.3949749,
     "latitude": 37.7753931
   },
   {
     "type": "speed",
-    "name": "Point 20",
-    "description": "",
+    "name": "Market St from Danvers St to Douglass St",
+    "description": "30 MPH",
     "longitude": -122.441606,
     "latitude": 37.7610701
   },
   {
     "type": "speed",
-    "name": "Point 21",
-    "description": "",
+    "name": "Guerrero St from 19th St to 20th St",
+    "description": "25 MPH",
     "longitude": -122.4235723,
     "latitude": 37.7591859
   },
   {
     "type": "speed",
-    "name": "Point 22",
-    "description": "",
+    "name": "16th St from Bryant St to Potrero Ave",
+    "description": "25 MPH",
     "longitude": -122.4090575,
     "latitude": 37.7657392
   },
   {
     "type": "speed",
-    "name": "Point 23",
-    "description": "",
+    "name": "San Jose Ave from 29th St to 30th St",
+    "description": "25 MPH",
     "longitude": -122.4230834,
     "latitude": 37.7431078
   },
   {
     "type": "speed",
-    "name": "Point 24",
-    "description": "",
+    "name": "Cesar Chavez St from Folsom St to Harrison St",
+    "description": "25 MPH",
     "longitude": -122.4126191,
     "latitude": 37.7482821
   },
   {
     "type": "speed",
-    "name": "Point 25",
-    "description": "",
+    "name": "Cesar Chavez St from Indiana St to Tennessee St",
+    "description": "30 MPH",
     "longitude": -122.3894189,
     "latitude": 37.7501188
   },
   {
     "type": "speed",
-    "name": "Point 26",
-    "description": "Northbound Only",
+    "name": "3rd St (NB only) from Key Ave to Jamestown Ave",
+    "description": "25 MPH",
     "longitude": -122.3966872,
     "latitude": 37.7198795
   },
   {
     "type": "speed",
-    "name": "Point 27",
-    "description": "Southbound Only",
+    "name": "Bayshore Blvd (SB only) from 101 off-ramp to Tunnel Ave",
+    "description": "30 MPH",
     "longitude": -122.3997535,
     "latitude": 37.714213
   },
   {
     "type": "speed",
-    "name": "Point 28",
-    "description": "",
+    "name": "Geneva Ave from Prague St to Brookdale Ave",
+    "description": "30 MPH",
     "longitude": -122.4277161,
     "latitude": 37.7115443
   },
   {
     "type": "speed",
-    "name": "Point 29",
-    "description": "",
+    "name": "Mission St from Ottawa Ave to Allison St",
+    "description": "20 MPH",
     "longitude": -122.4432028,
     "latitude": 37.7140644
   },
   {
     "type": "speed",
-    "name": "Point 30",
-    "description": "",
+    "name": "Alemany Blvd from Farragut Ave to Naglee Ave",
+    "description": "30 MPH",
     "longitude": -122.4506078,
     "latitude": 37.7129814
   },
   {
     "type": "speed",
-    "name": "Point 31",
-    "description": "",
+    "name": "Ocean Ave from Frida Kahlo Way to Howth St",
+    "description": "25 MPH",
     "longitude": -122.451037,
     "latitude": 37.7229961
   },
   {
     "type": "speed",
-    "name": "Point 32",
-    "description": "",
+    "name": "San Jose Ave from Santa Ynez Ave to Ocean Ave",
+    "description": "25 MPH",
     "longitude": -122.4434154,
     "latitude": 37.7245308
   },
   {
     "type": "speed",
-    "name": "Point 33",
-    "description": "",
+    "name": "Monterey Blvd from Edna St to Congo St",
+    "description": "25 MPH",
     "longitude": -122.4444145,
     "latitude": 37.7315474
   },
   {
     "type": "speed",
-    "name": "Point 34",
-    "description": "",
+    "name": "Sloat Blvd from 41st Ave to Skyline Blvd",
+    "description": "30 MPH",
     "longitude": -122.4983618,
     "latitude": 37.7339848
+  },
+  {
+    "type": "speed",
+    "name": "Martin Luther King Jr Way (42nd to 43rd)",
+    "description": "30 MPH",
+    "longitude": -122.2678,
+    "latitude": 37.834
+  },
+  {
+    "type": "speed",
+    "name": "Claremont Ave (Hillegass to College)",
+    "description": "30 MPH",
+    "longitude": -122.2526,
+    "latitude": 37.8504
+  },
+  {
+    "type": "speed",
+    "name": "Foothill Blvd (Irving to 24th)",
+    "description": "25 MPH",
+    "longitude": -122.2285,
+    "latitude": 37.7885
+  },
+  {
+    "type": "speed",
+    "name": "Foothill Blvd (19th to 20th)",
+    "description": "30 MPH",
+    "longitude": -122.2346,
+    "latitude": 37.7909
+  },
+  {
+    "type": "speed",
+    "name": "7th St (Adeline to Linden)",
+    "description": "30 MPH",
+    "longitude": -122.2885,
+    "latitude": 37.8049
+  },
+  {
+    "type": "speed",
+    "name": "West Grand Ave (Chestnut to Linden)",
+    "description": "30 MPH",
+    "longitude": -122.283,
+    "latitude": 37.813
+  },
+  {
+    "type": "speed",
+    "name": "Broadway (26th to 27th)",
+    "description": "20 MPH",
+    "longitude": -122.2646,
+    "latitude": 37.8149
+  },
+  {
+    "type": "speed",
+    "name": "San Pablo Ave (Athens to Sycamore)",
+    "description": "25 MPH",
+    "longitude": -122.2741,
+    "latitude": 37.8115
+  },
+  {
+    "type": "speed",
+    "name": "7th St (Broadway to Franklin)",
+    "description": "20 MPH",
+    "longitude": -122.275,
+    "latitude": 37.7988
+  },
+  {
+    "type": "speed",
+    "name": "MacArthur Blvd (Green Acre to Enos)",
+    "description": "30 MPH",
+    "longitude": -122.183,
+    "latitude": 37.779
+  },
+  {
+    "type": "speed",
+    "name": "Fruitvale Ave (Galindo to Logan)",
+    "description": "25 MPH",
+    "longitude": -122.217,
+    "latitude": 37.787
+  },
+  {
+    "type": "speed",
+    "name": "International Blvd (40th to 41st)",
+    "description": "25 MPH",
+    "longitude": -122.2135,
+    "latitude": 37.7685
+  },
+  {
+    "type": "speed",
+    "name": "Hegenberger Rd (Spencer to Hawley)",
+    "description": "40 MPH",
+    "longitude": -122.1915,
+    "latitude": 37.7378
+  },
+  {
+    "type": "speed",
+    "name": "73rd Ave (Fresno to Krause)",
+    "description": "30 MPH",
+    "longitude": -122.1864,
+    "latitude": 37.7554
+  },
+  {
+    "type": "speed",
+    "name": "Bancroft Ave (86th to Auseon)",
+    "description": "35 MPH",
+    "longitude": -122.1645,
+    "latitude": 37.7565
+  },
+  {
+    "type": "speed",
+    "name": "98th Ave (Blake to Gould)",
+    "description": "30 MPH",
+    "longitude": -122.1485,
+    "latitude": 37.7415
+  },
+  {
+    "type": "speed",
+    "name": "98th Ave (Cherry to Birch)",
+    "description": "30 MPH",
+    "longitude": -122.1555,
+    "latitude": 37.7455
+  },
+  {
+    "type": "speed",
+    "name": "Bancroft Ave (61st to 62nd)",
+    "description": "30 MPH",
+    "longitude": -122.1855,
+    "latitude": 37.7695
   },
   {
     "name": "4th St at Harrison St",
