@@ -81,8 +81,9 @@
       </Pair>
     </StyleMap>
     <Placemark>
-      <name>Point 1</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Fulton St from 42nd Ave to 43rd Ave</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.5034169,37.771732,0
@@ -90,8 +91,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 2</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Fulton St from 2nd Ave to Arguello Blvd</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4594217,37.7743583,0
@@ -99,8 +101,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 3</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Geary Blvd from 7th Ave to 8th Ave</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4656382,37.7810217,0
@@ -108,8 +111,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 4</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Lincoln Way from 27th Ave to 28th Ave</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4863094,37.7648988,0
@@ -117,8 +121,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 5</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Geary Blvd from Webster St to Buchanan St</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4313088,37.7846226,0
@@ -126,8 +131,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 6</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Turk St from Van Ness Ave to Polk St</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4197715,37.7820919,0
@@ -135,8 +141,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 7</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Bay St from Octavia St to Gough St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4292219,37.8036122,0
@@ -144,8 +151,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 8</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Franklin St from Union St to Green St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4255016,37.7978493,0
@@ -153,8 +161,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 9</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Columbus Ave from Lombard St to Greenwich St</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4132252,37.8025361,0
@@ -162,8 +171,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 10</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Broadway from Powell St to Stockton St</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4094503,37.7975727,0
@@ -171,8 +181,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 11</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Embarcadero from Green St to Battery St</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4006524,37.8025589,0
@@ -180,8 +191,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 13</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Mission St from 8th St to 9th St</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4139716,37.7768001,0
@@ -189,8 +201,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 14</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>10th St from Harrison St to Folsom St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4121495,37.7721858,0
@@ -198,8 +211,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 15</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>9th St from Bryant St to Harrison St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4093381,37.7719974,0
@@ -207,8 +221,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 16</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>7th St from Harrison St to Folsom St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4070519,37.7761713,0
@@ -216,8 +231,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 17</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Harrison St from 4th St to 5th St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4007047,37.7799695,0
@@ -225,8 +241,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 18</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Bryant St from 2nd St to 3rd St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.3947052,37.7821892,0
@@ -234,8 +251,8 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 19</name>
-      <description>Eastbound Only</description>
+      <name>King St (EB only) from 4th St to 5th St</name>
+      <description>30 MPH</description>
       <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
@@ -244,8 +261,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 20</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Market St from Danvers St to Douglass St</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.441606,37.7610701,0
@@ -253,8 +271,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 21</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Guerrero St from 19th St to 20th St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4235723,37.7591859,0
@@ -262,8 +281,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 22</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>16th St from Bryant St to Potrero Ave</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4090575,37.7657392,0
@@ -271,8 +291,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 23</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>San Jose Ave from 29th St to 30th St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4230834,37.7431078,0
@@ -280,8 +301,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 24</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Cesar Chavez St from Folsom St to Harrison St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4126191,37.7482821,0
@@ -289,8 +311,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 25</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Cesar Chavez St from Indiana St to Tennessee St</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.3894189,37.7501188,0
@@ -298,8 +321,8 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 26</name>
-      <description>Northbound Only</description>
+      <name>3rd St (NB only) from Key Ave to Jamestown Ave</name>
+      <description>25 MPH</description>
       <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
@@ -308,8 +331,8 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 27</name>
-      <description>Southbound Only</description>
+      <name>Bayshore Blvd (SB only) from 101 off-ramp to Tunnel Ave</name>
+      <description>30 MPH</description>
       <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
@@ -318,8 +341,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 28</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Geneva Ave from Prague St to Brookdale Ave</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4277161,37.7115443,0
@@ -327,8 +351,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 29</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Mission St from Ottawa Ave to Allison St</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4432028,37.7140644,0
@@ -336,8 +361,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 30</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Alemany Blvd from Farragut Ave to Naglee Ave</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4506078,37.7129814,0
@@ -345,8 +371,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 31</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Ocean Ave from Frida Kahlo Way to Howth St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.451037,37.7229961,0
@@ -354,8 +381,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 32</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>San Jose Ave from Santa Ynez Ave to Ocean Ave</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4434154,37.7245308,0
@@ -363,8 +391,9 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 33</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Monterey Blvd from Edna St to Congo St</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4444145,37.7315474,0
@@ -372,13 +401,161 @@
       </Point>
     </Placemark>
     <Placemark>
-      <name>Point 34</name>
-      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <name>Sloat Blvd from 41st Ave to Skyline Blvd</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
       <Point>
         <coordinates>
           -122.4983618,37.7339848,0
         </coordinates>
       </Point>
     </Placemark>
+
+    <!-- NEW OAKLAND CAMERAS -->
+    <Placemark>
+      <name>Martin Luther King Jr Way (42nd to 43rd)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2678,37.8340,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Claremont Ave (Hillegass to College)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2526,37.8504,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Foothill Blvd (Irving to 24th)</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2285,37.7885,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Foothill Blvd (19th to 20th)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2346,37.7909,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>7th St (Adeline to Linden)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2885,37.8049,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>West Grand Ave (Chestnut to Linden)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2830,37.8130,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Broadway (26th to 27th)</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2646,37.8149,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>San Pablo Ave (Athens to Sycamore)</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2741,37.8115,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>7th St (Broadway to Franklin)</name>
+      <description>20 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2750,37.7988,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>MacArthur Blvd (Green Acre to Enos)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1830,37.7790,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Fruitvale Ave (Galindo to Logan)</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2170,37.7870,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>International Blvd (40th to 41st)</name>
+      <description>25 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.2135,37.7685,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Hegenberger Rd (Spencer to Hawley)</name>
+      <description>40 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1915,37.7378,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>73rd Ave (Fresno to Krause)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1864,37.7554,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bancroft Ave (86th to Auseon)</name>
+      <description>35 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1645,37.7565,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>98th Ave (Blake to Gould)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1485,37.7415,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>98th Ave (Cherry to Birch)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1555,37.7455,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bancroft Ave (61st to 62nd)</name>
+      <description>30 MPH</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>-122.1855,37.7695,0</coordinates>
+      </Point>
+    </Placemark>
+
   </Document>
 </kml>
